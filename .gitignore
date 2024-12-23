@@ -17,7 +17,6 @@
 *.swo
 
 # Compiled output files (PDFs, DVI, PS, etc.)
-*.pdf
 *.dvi
 *.ps
 
