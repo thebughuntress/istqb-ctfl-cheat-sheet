@@ -245,12 +245,12 @@ Early and frequent feedback allows for the early communication of potential qual
 \end{itemize}
 \section*{Roles and Responsibilities in Reviews}
 \begin{itemize}
-    \item Manager – decides what to review and provides resources
-    \item Author – creates and fixes the work product
-    \item Moderator (also known as the facilitator) – runs review meetings and ensures a safe environment
-    \item Scribe (also known as recorder) – records anomalies and decisions during the review
-    \item Reviewer – performs the review, may be a subject expert or stakeholder
-    \item Review leader – takes overall responsibility for review
+    \item \textbf{Manager} – decides what is to be reviewed and provides resources, such as staff and time
+    \item \textbf{Author} – creates and fixes the work product
+    \item \textbf{Moderator (Facilitator)} – ensures effective running of review meetings, including mediation, time management, and a safe environment
+    \item \textbf{Scribe (Recorder)} – records anomalies and decisions during the review
+    \item \textbf{Reviewer} – performs the review, may be a subject expert or stakeholder
+    \item \textbf{Review leader} – takes responsibility such as deciding who will be involved, and organizing when and where the review will take place
 \end{itemize}
 
 \section*{Review Types}
@@ -378,7 +378,7 @@ When prioritizing test cases, different factors can be taken into account. The m
 \end{itemize}
 
 \section*{Test Pyramid}
- Tests in the bottom layer are small, isolated, fast, and check small pieces of functionality, a lot of them are needed for coverage. The top layer represents complex, high-level, end-to-end tests.
+The test pyramid model shows that different tests have different levels of granularity. Tests in the bottom layer are small, isolated, fast, and check small pieces of functionality, a lot of them are needed for coverage. The top layer represents complex, high-level, end-to-end tests.
 \begin{figure}[H]
   \begin{minipage}{0.45\textwidth}
     \centering
@@ -400,7 +400,7 @@ When prioritizing test cases, different factors can be taken into account. The m
 %------------ 5. Managing the Test Activities (2) ---------------
 \fancybox{5. Managing the Test Activities (2)}{
 \section*{Testing Quadrants}
-The testing quadrants group the test levels with the appropriate test types, activities, test techniques and work products in the Agile software development.
+The testing quadrants group the test levels with the appropriate test types, activities, test techniques and work products in Agile software development.
 \vspace{-10pt}
 \begin{figure}[H]
     \includegraphics[width=0.8\textwidth]{quadrants.png}
@@ -474,6 +474,11 @@ CM provides a discipline for identifying, controlling, and tracking work product
 
 \section*{Defect Management}
 Workflow for handling individual defects or anomalies from their discovery to their closure and rules for their classification.\\
+
+\subsection*{Which of the test activities are MOST likely to involve the application of BVA and EP?}
+To identify the features that require testing, the test basis is analyzed and defined as test conditions, which are then prioritized along with related risks. The systematic identification of test conditions as coverage items often involves using \textbf{test techniques} both during \underline{test analysis} and as part of the \underline{test design} activity.
+
+
 }
 
 %------------ 6. Test Tools ---------------
@@ -565,16 +570,23 @@ test completion report, documented lessons learned, action items for improvement
 %------------ 4.2. Black-Box Test Techniques ---------------
 \fancybox{4.2. Black-Box Test Techniques}{
 \section*{Basics}
-Black-box test technique, are based on an analysis of the specified behavior of the test object without reference to its internal structure. In black-box testing (specification-based) the test cases are based on an analysis of business logic, test cases are \textbf{not} based on the decisions in the source code. Therefore, test cases are independent of how the software is implemented.
+Black-box test technique, are based on an analysis of the specified behavior of the test object without reference to its internal structure. In black-box testing (specification-based) the test cases are based on an analysis of business logic, test cases are \textbf{not} based on the decisions in the source code. Therefore, test cases are independent of how the software is implemented.\\
 
 \section*{1. Eqivalence Partitioning (EP)}
 EP divides data into partitions. If a test case, that tests one value from an equivalence partition, detects a defect, this defect should also be detected by test cases that test any other value from the same partition. Therefore, one test for each partition is sufficient.\\
 
 \section*{2. Boundary Value Analysis (BVA)}
-BVA is a test technique based on exercising the boundaries of equivalence partitions. Therefore, BVA can only be used for ordered partitions. The minimum and maximum values of a partition are its boundary values. In the case of BVA, if two elements belong to the same partition, all elements between them must also belong to that partition.
+BVA is a test technique based on exercising the boundaries of equivalence partitions. Therefore, BVA can only be used for ordered partitions. The minimum value (left boundary (LB))and maximum value (right boundary (RB)) of a partition are its boundary values. In the case of BVA, if two elements belong to the same partition, all elements between them must also belong to that partition.
+
+\vspace{-10pt}
+\begin{figure}[H]
+    \includegraphics[width=1\textwidth]{bva.png}
+    \vspace{-10pt}
+\end{figure}
+    
 \begin{itemize}
-\item 2-value BVA
-\item 3-value BVA
+\item 2-value BVA: LB-1, LB, RB, RB+1
+\item 3-value BVA: LB-1, LB, LB+1, RB-1, RB, RB+1
 \end{itemize}
 
 \section*{3. Decision Table Testing}
@@ -589,8 +601,7 @@ A state diagram models the behavior of a system by showing its possible states a
 \end{itemize}
 All states coverage is weaker than valid transitions coverage, because it can typically be achieved without exercising all the transitions.\\
 
-\subsection*{Which of the test activities are MOST likely to involve the application of BVA and EP?}
-To identify the features that require testing, the test basis is analyzed and defined as test conditions, which are then prioritized along with related risks. The systematic identification of test conditions as coverage items often involves using \textbf{test techniques} both during \underline{test analysis} and as part of the \underline{test design} activity.
+
 }
 
 \fancybox{4.3. White-Box Test Techniques}{
@@ -608,7 +619,7 @@ In branch testing, the test cases are derived from knowledge of the control flow
 A branch is a transfer of control between two nodes in the control flow graph, which shows the possible sequences in which source code statements are executed in the test object. Each transfer of control can be either \textbf{unconditional} (i.e., straight-line code) or \textbf{conditional} (i.e., a decision outcome).\\
 
 \subsection*{Branch coverage metric}
-The formula for branch coverage $B_{\text{Cov}}$ is given by:
+In branch testing the coverage items are branches, which are represented by the edges of a control flow graph. The formula for branch coverage $B_{\text{Cov}}$ is given by:
 \begin{equation*}
     B_{\text{Cov}} = \left( \frac{\text{branches exercised by test cases}}{\text{total number of branches in code}} \right) \times 100\% 
     \end{equation*}
@@ -621,28 +632,17 @@ Test T1 achieved 40\% statement coverage and test T2 achieved 65\% statement cov
 The statements executed by T1 and T2 were disjoint, the coverage of the test suite {T1, T2} would be 105\%, which is impossible. At least 5\% of executable statements must have been executed by both T1 and T2.
 }
 
-%------------ Anomalies ---------------
-\fancybox{Anomalies}{
-\section*{Def. "Anomalies"}
-Deviations from expected behavior in software:\\
-\begin{itemize}
-\item (real) defects or bugs - errors in the code
-\item failures - system does not perform as intended
-\item errors - mistakes made by developers, ...
-\item false-positives – non-issues flagged as problems
-\item change request
-\end{itemize}
-}
-
 %------------ 4.4. Experience-based Test Techniques ---------------
 \fancybox{4.4. Experience-based Test Techniques}{
 \section*{1. Error guessing}
 Error guessing is a test technique used to anticipate the occurrence of errors, defects, and failures, based on the tester’s knowledge, including:
 \begin{itemize}
 \item How the application has worked in the past
-\item The types of errors the developers tend to make and the types of defects that result from these errors
-\item The types of failures that have occurred in other, similar applications
+\item Types of errors the developers tend to make 
+\item Types of failures in similar applications
 \end{itemize}
+
+\textbf{Fault attack} is a methodical approach to the implementation of error guessing and requires a checklist of possible errors, defects and failures, and to design tests that will identify defects associated with the errors, expose the defects, or cause the failures. Both, error guessing and checklist-based testing use lists.\\
 
 \section*{2. Exploratory testing}
 In exploratory testing, tests are simultaneously designed, executed, and evaluated while the tester learns about the test object. The testing is used to learn more about the test object, to explore it more deeply with focused tests, and to create tests for untested areas.\\
@@ -653,28 +653,28 @@ Exploratory testing is most useful when there are few known specifications and/o
 In checklist-based testing, a tester designs, implements, and executes tests to cover test conditions from a checklist. Checklists can be built based on experience, knowledge about what is important for the user, or an understanding of why and how software fails. Checklists should not contain items that can be checked automatically, items better suited as entry criteria, exit criteria, or items that are too general.
 }
 
+
 %------------ Acceptance Criteria ---------------
 \fancybox{Acceptance Criteria}{
-\section*{Basics}
-Acceptance criteria are a set of predefined requirements or conditions that a product, feature, or functionality must meet to be considered complete and acceptable to stakeholders.\\
-
 \section*{Format}
+Set of predefined requirements or conditions that a product, feature, or functionality must meet to be considered complete and acceptable to stakeholders.\\
+
 \begin{itemize}
 \item \textbf{Scenario-Oriented Format (Given-When-Then)}\\
-Given/When/Then is a scenario-oriented format because it describes a scenario to be verified.
+Describes a scenario to be verified.
 \item \textbf{Rules-Based Format}\\
-The rule-oriented format includes formats like bullet point verification lists or tabulated forms of input-output mappings, explicitly showing the rules to be followed. 
+Includes formats like bullet point verification lists or tabulated forms of input-output mappings, explicitly showing the rules to be followed. 
 \end{itemize}
-}
 
-%------------ Validation vs Verification ---------------
-\fancybox{Validation vs Verification}{
+\section*{Validation vs Verification}
 \begin{itemize}
 \item \textbf{Validation} is concerned with meeting user requirements and expectations
 \item \textbf{Verification} is concerned with meeting specified requirements
 \end{itemize}
 
-Acceptance testing focuses on validation and on demonstrating readiness for deployment, which means that the system fulfills the user’s business needs. Ideally, acceptance testing should be performed by the intended users. The main forms of acceptance testing are: user acceptance testing (UAT), operational acceptance testing, contractual and regulatory acceptance testing, alpha testing and beta testing.
+Acceptance testing focuses on validation and on demonstrating readiness for deployment, which means that the system fulfills the user’s business needs. Should be performed by the intended users.
+%Ideally, acceptance testing should be performed by the intended users. 
+%The main forms of acceptance testing are: user acceptance testing (UAT), operational acceptance testing, contractual and regulatory acceptance testing, alpha testing and beta testing.
 }
 
 %------------ Reviews ---------------
@@ -682,7 +682,7 @@ Acceptance testing focuses on validation and on demonstrating readiness for depl
 \subsection*{Review activities}
 \begin{itemize}
 \item \textbf{Planning}\\
-Defining the review scope, purpose, work product to be reviewed, quality characteristics to be evaluated, areas of focus, exit criteria, supporting information such as standards, effort, and timeframes.)
+Defining the review scope, purpose, work product to be reviewed, quality characteristics to be evaluated, areas of focus, exit criteria, supporting information such as standards, effort, and timeframes.
 
 \item \textbf{Review initiation}\\
 Ensuring all participants have access to the work product and necessary resources, and clarifying their roles and responsibilities.
@@ -698,33 +698,32 @@ Analyzing and discussing each anomaly, determining its status, ownership, and re
 
 \subsection*{Roles in reviews}
 \begin{itemize}
-\item \textbf{Scribe (or Recorder)}\\
+\item \textbf{Scribe (Recorder)}\\
 Responsible for gathering feedback and recording information from reviewers and documenting review information, such as decisions made, and any new anomalies identified during the review meeting.
 
 \item \textbf{Review Leader}\\
 Responsible for overseeing the review process, such as selecting the review team members, scheduling review meetings (organizing when and where), and ensuring that the review is completed successfully.
 
-\item \textbf{Facilitator (or Moderator)}\\
+\item \textbf{Facilitator (Moderator)}\\
 Responsible for ensuring that the review meetings run effectively, including managing time, mediating discussions, and creating a safe environment where everyone can voice their opinions freely.
 
 \item \textbf{Manager}\\
-Responsible for deciding what needs to be reviewed and allocating resources, such as staff and time, for the review.
+Responsible for deciding what needs to be reviewed and allocating resources, such as staff and time.
 \end{itemize}
 }
 
-
-%------------ Metrics ---------------
-\fancybox{Metrics}{
+%------------ Anomalies ---------------
+\fancybox{Anomalies}{
+\section*{Def. "Anomalies"}
+Deviations from expected behavior in software:\\
 \begin{itemize}
-\item \textbf{Product quality metrics}\\
-Mean time to failure (measures maturity)
-\item \textbf{Defect metric}\\
-Number of defects found, Defect detection percentage 
-\item \textbf{Coverage metric}\\
-Requirements coverage
+\item (real) defects or bugs - errors in the code
+\item failures - system does not perform as intended
+\item errors - mistakes made by developers, ...
+\item false-positives – non-issues flagged as problems
+\item change request
 \end{itemize}
 }
-
 
 
 
